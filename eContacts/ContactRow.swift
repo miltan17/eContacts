@@ -15,5 +15,7 @@ struct ContactRow {
 
 struct IndividualContact{
     var isLiked: Bool
-    let name:String
+    var name: String
+    var phone: String
+//    var contact: CNContact
 }

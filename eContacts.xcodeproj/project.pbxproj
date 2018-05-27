@@ -14,7 +14,6 @@
 		52AC3F6A20B9749500F7A1D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AC3F6820B9749500F7A1D3 /* LaunchScreen.storyboard */; };
 		52AC3F7620B975BE00F7A1D3 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3F7520B975BE00F7A1D3 /* ContactCell.swift */; };
 		52AC3F7820B9760400F7A1D3 /* ContactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3F7720B9760400F7A1D3 /* ContactRow.swift */; };
-		52AC3F7B20B9768A00F7A1D3 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3F7A20B9768A00F7A1D3 /* Device.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		52AC3F6B20B9749500F7A1D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52AC3F7520B975BE00F7A1D3 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		52AC3F7720B9760400F7A1D3 /* ContactRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactRow.swift; sourceTree = "<group>"; };
-		52AC3F7A20B9768A00F7A1D3 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +90,6 @@
 			children = (
 				52AC3F7520B975BE00F7A1D3 /* ContactCell.swift */,
 				52AC3F7720B9760400F7A1D3 /* ContactRow.swift */,
-				52AC3F7A20B9768A00F7A1D3 /* Device.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -182,7 +179,6 @@
 				52AC3F6220B9749500F7A1D3 /* ViewController.swift in Sources */,
 				52AC3F6020B9749500F7A1D3 /* AppDelegate.swift in Sources */,
 				52AC3F7820B9760400F7A1D3 /* ContactRow.swift in Sources */,
-				52AC3F7B20B9768A00F7A1D3 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +340,7 @@
 				52AC3F7020B9749500F7A1D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
