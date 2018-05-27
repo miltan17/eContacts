@@ -12,6 +12,9 @@
 		52AC3F6520B9749500F7A1D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AC3F6320B9749500F7A1D3 /* Main.storyboard */; };
 		52AC3F6720B9749500F7A1D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52AC3F6620B9749500F7A1D3 /* Assets.xcassets */; };
 		52AC3F6A20B9749500F7A1D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AC3F6820B9749500F7A1D3 /* LaunchScreen.storyboard */; };
+		52AC3F7620B975BE00F7A1D3 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3F7520B975BE00F7A1D3 /* ContactCell.swift */; };
+		52AC3F7820B9760400F7A1D3 /* ContactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3F7720B9760400F7A1D3 /* ContactRow.swift */; };
+		52AC3F7B20B9768A00F7A1D3 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC3F7A20B9768A00F7A1D3 /* Device.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		52AC3F6620B9749500F7A1D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52AC3F6920B9749500F7A1D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52AC3F6B20B9749500F7A1D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52AC3F7520B975BE00F7A1D3 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		52AC3F7720B9760400F7A1D3 /* ContactRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactRow.swift; sourceTree = "<group>"; };
+		52AC3F7A20B9768A00F7A1D3 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,49 @@
 		52AC3F5E20B9749500F7A1D3 /* eContacts */ = {
 			isa = PBXGroup;
 			children = (
-				52AC3F5F20B9749500F7A1D3 /* AppDelegate.swift */,
-				52AC3F6120B9749500F7A1D3 /* ViewController.swift */,
-				52AC3F6320B9749500F7A1D3 /* Main.storyboard */,
-				52AC3F6620B9749500F7A1D3 /* Assets.xcassets */,
-				52AC3F6820B9749500F7A1D3 /* LaunchScreen.storyboard */,
-				52AC3F6B20B9749500F7A1D3 /* Info.plist */,
+				52AC3F7420B9758200F7A1D3 /* Controllers */,
+				52AC3F7320B9757D00F7A1D3 /* Models */,
+				52AC3F7220B9757700F7A1D3 /* Views */,
+				52AC3F7120B9756E00F7A1D3 /* Supporting Files */,
 			);
 			path = eContacts;
+			sourceTree = "<group>";
+		};
+		52AC3F7120B9756E00F7A1D3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				52AC3F5F20B9749500F7A1D3 /* AppDelegate.swift */,
+				52AC3F6620B9749500F7A1D3 /* Assets.xcassets */,
+				52AC3F6B20B9749500F7A1D3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52AC3F7220B9757700F7A1D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				52AC3F6820B9749500F7A1D3 /* LaunchScreen.storyboard */,
+				52AC3F6320B9749500F7A1D3 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		52AC3F7320B9757D00F7A1D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52AC3F7520B975BE00F7A1D3 /* ContactCell.swift */,
+				52AC3F7720B9760400F7A1D3 /* ContactRow.swift */,
+				52AC3F7A20B9768A00F7A1D3 /* Device.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		52AC3F7420B9758200F7A1D3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				52AC3F6120B9749500F7A1D3 /* ViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52AC3F7620B975BE00F7A1D3 /* ContactCell.swift in Sources */,
 				52AC3F6220B9749500F7A1D3 /* ViewController.swift in Sources */,
 				52AC3F6020B9749500F7A1D3 /* AppDelegate.swift in Sources */,
+				52AC3F7820B9760400F7A1D3 /* ContactRow.swift in Sources */,
+				52AC3F7B20B9768A00F7A1D3 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
