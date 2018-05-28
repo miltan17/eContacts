@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Contacts
 
 struct ContactRow {
     var isOpen: Bool
@@ -15,7 +16,7 @@ struct ContactRow {
 
 struct IndividualContact{
     var isLiked: Bool
-    var name: String
-    var phone: String
-//    var contact: CNContact
+    //var name: String
+    //var phone: String
+    var contact: CNContact
 }
