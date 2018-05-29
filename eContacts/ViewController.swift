@@ -9,26 +9,28 @@
 import UIKit
 import Contacts
 
-class ViewController: UITableViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let cellID = "ContactCell"
     var contactDictionary = [ContactRow]()
     var showIndexPath = false
     
+    @IBOutlet weak var contactTable: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        contactTable.dataSource = self
+        contactTable.delegate = self
         fetchContacts()
         
-        navigationItem.title = "Contacts"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show IndexPath", style: .plain, target: self, action: #selector(handleShowIndexPath))
-        
-        tableView.register(ContactCell.self, forCellReuseIdentifier: cellID)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     
     //MARK: - Handler
     func handleShowIndexPath(){
@@ -41,8 +43,9 @@ class ViewController: UITableViewController {
         }
         showIndexPath = !showIndexPath
         let animationStyle = showIndexPath ? UITableViewRowAnimation.left : .right
-        tableView.reloadRows(at: indexPathToReload, with: animationStyle)
+        contactTable.reloadRows(at: indexPathToReload, with: animationStyle)
     }
+    
     
     func handleOpenClose(button: UIButton){
         let section = button.tag
@@ -51,14 +54,14 @@ class ViewController: UITableViewController {
         contactDictionary[section].isOpen = !isOpened
         button.setTitle(isOpened ? "Open" : "Close" , for: .normal)
         if isOpened{
-            tableView.deleteRows(at: indexPaths, with: .fade)
+            contactTable.deleteRows(at: indexPaths, with: .fade)
         }else{
-            tableView.insertRows(at: indexPaths, with: .fade)
+            contactTable.insertRows(at: indexPaths, with: .fade)
         }
     }
     
-    //MARK: - Essential Functions
     
+    //MARK: - Essential Functions
     func fetchContacts(){
         let store = CNContactStore()
         store.requestAccess(for: .contacts) { (granted, error) in
@@ -83,13 +86,15 @@ class ViewController: UITableViewController {
         }
     }
     
+    
     func callLikeOrDislikeFor(cell: ContactCell){
-        var indexPath = tableView.indexPath(for: cell)
+        var indexPath = contactTable.indexPath(for: cell)
         let isLiked = contactDictionary[(indexPath?.section)!].contacts[(indexPath?.row)!].isLiked
         contactDictionary[(indexPath?.section)!].contacts[(indexPath?.row)!].isLiked = !isLiked
         
-        tableView.reloadRows(at: [indexPath!], with: .fade)
+        contactTable.reloadRows(at: [indexPath!], with: .fade)
     }
+    
     
     func getIndexPathsForSection(section: Int) -> [IndexPath]{
         var indexPaths = [IndexPath]()
@@ -102,52 +107,44 @@ class ViewController: UITableViewController {
     
     
     //MARK: - Table view
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return contactDictionary.count
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton()
         button.setTitle("Close", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = UIColor.darkGray
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        
         button.addTarget(self, action: #selector(handleOpenClose), for: .touchUpInside)
         button.tag = section
-        
         return button
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 34
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !contactDictionary[section].isOpen{
-            return 0
-        }
-        return contactDictionary[section].contacts.count
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contactDictionary[section].isOpen == false ? 0 : contactDictionary[section].contacts.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! ContactCell
-        let cell = ContactCell(style: .subtitle, reuseIdentifier: cellID)
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = ContactCell(style: .subtitle, reuseIdentifier: "contactCell")
         cell.VC = self
-        
         let contact = contactDictionary[indexPath.section].contacts[indexPath.row]
         let name = contact.contact.givenName + " " + contact.contact.familyName
-        
         cell.accessoryView?.tintColor = contact.isLiked ? UIColor.green : .darkGray
         cell.detailTextLabel?.text = contact.contact.phoneNumbers.first?.value.stringValue
-        if showIndexPath {
-            cell.textLabel?.text = "\(name) Section: \(indexPath.section) Row: \(indexPath.row)"
-        }else{
-            cell.textLabel?.text = name
-        }
-        
+        cell.textLabel?.text = showIndexPath == true ? "\(name) Section: \(indexPath.section) Row: \(indexPath.row)" : name
         return cell
     }
+ 
 }
 
 extension String.CharacterView {
@@ -155,21 +152,6 @@ extension String.CharacterView {
         return self[index(startIndex, offsetBy: i)]
     }
 }
-
-
-
-//                    for contact in [contacts]{
-//                        for con in contact {
-//                            var key = String(con.name.characters[sequentialAccess: 0]).uppercased()
-//
-//                            if let _ = self.contactsDictionary[key]{
-//                                self.contactsDictionary[key]?.contacts.append(con)
-//                            }else{
-//                                self.contactsDictionary[key] = ContactRow(isOpen: true, contacts: [con])
-//                            }
-//                        }
-//                    }
-
 
 
 
